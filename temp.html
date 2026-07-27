@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Most Annoying Button</title>
+  
+  <style>
+    /* Reset and page background styling */
+    body {
+      background-color: #0f0f12;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Outer container boundary */
+    .annoyance-chamber {
+      position: relative;
+      width: 500px;
+      height: 400px;
+      background-color: #1a1a22;
+      border: 3px dashed #ff4757;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Invisible system logic toggles */
+    input[name="runaway"] {
+      display: none;
+    }
+
+    /* The moving target box */
+    .button-wrapper {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      width: 140px;
+      height: 48px;
+      /* Cubic-bezier curve gives it an annoying, springy bounce as it escapes */
+      transition: transform 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    }
+
+    /* Standardized button styling */
+    .btn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none; /* Hidden until their specific step is activated */
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 5px 0 #b33939;
+    }
+
+    /* Interactive click depression physics */
+    .btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 #b33939;
+    }
+
+    /* STEP 0: Display initial red trigger */
+    #step-0:checked ~ .button-wrapper .trigger-1 {
+      display: flex;
+      background-color: #ff4757;
+    }
+
+    /* STEP 1: Teleport button to top-right & trigger orange button */
+    #step-1:checked ~ .button-wrapper {
+      transform: translate(300px, 0px);
+    }
+    #step-1:checked ~ .button-wrapper .trigger-1 {
+      display: none;
+    }
+    #step-1:checked ~ .button-wrapper .trigger-2 {
+      display: flex;
+      background-color: #ffa502;
+      box-shadow: 0 5px 0 #cc8400;
+    }
+
+    /* STEP 2: Teleport button to bottom-left & trigger green button */
+    #step-2:checked ~ .button-wrapper {
+      transform: translate(0px, 290px);
+    }
+    #step-2:checked ~ .button-wrapper .trigger-2 {
+      display: none;
+    }
+    #step-2:checked ~ .button-wrapper .trigger-3 {
+      display: flex;
+      background-color: #2ed573;
+      box-shadow: 0 5px 0 #219653;
+    }
+
+    /* STEP 3: Delete button and deploy the congratulations screen */
+    #step-3:checked ~ .button-wrapper {
+      display: none;
+    }
+    #step-3:checked ~ .victory-screen {
+      display: flex;
+    }
+
+    /* Sarcastic Victory Screen overlay */
+    .victory-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 10, 14, 0.98);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #2ed573;
+      text-align: center;
+      padding: 30px;
+      box-sizing: border-box;
+      animation: flash 0.5s infinite alternate;
+    }
+
+    .victory-screen h2 {
+      font-size: 2.2rem;
+      margin: 0 0 10px 0;
+      color: #fff;
+    }
+
+    .victory-screen p {
+      color: #a4b0be;
+      margin: 5px 0;
+    }
+
+    .victory-screen .instructions {
+      font-size: 0.8rem;
+      color: #57606f;
+      margin-top: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Unnecessary flashing screen just to make it more obnoxious */
+    @keyframes flash {
+      from { border: 4px solid #2ed573; }
+      to { border: 4px solid #1e90ff; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="annoyance-chamber">
+    <!-- State controller inputs -->
+    <input type="radio" name="runaway" id="step-0" checked>
+    <input type="radio" name="runaway" id="step-1">
+    <input type="radio" name="runaway" id="step-2">
+    <input type="radio" name="runaway" id="step-3">
+
+    <!-- The slippery Target Button -->
+    <div class="button-wrapper">
+      <label for="step-1" class="btn trigger-1">Click me!</label>
+      <label for="step-2" class="btn trigger-2">Over here!</label>
+      <label for="step-3" class="btn trigger-3">Last try!</label>
+    </div>
+
+    <!-- Sarcastic end screen -->
+    <div class="victory-screen">
+      <h2>🎉 CONGRATULATIONS!</h2>
+      <p>You have successfully clicked a digital rectangle.</p>
+      <p>This achievement has been recorded nowhere.</p>
+      <p class="instructions">Reload page to suffer again</p>
+    </div>
+  </div>
+
+</body>
+</html>

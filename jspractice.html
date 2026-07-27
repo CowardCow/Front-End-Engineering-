@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <title>Book List</title>
+  <style> 
+    .parent {
+      position: relative;
+      margin: auto;
+      display: grid;
+      grid-template-rows: repeat(6, 1fr);
+      width: 550px;
+      border: 2px solid black;
+      border-radius: 8px;
+      gap: 5px;
+      padding: 5px;
+    }
+
+    .child {
+      position: relative;
+      border: 1px solid black;
+      border-radius: 8px;
+      display: flex;
+      align-items: flex-start; 
+      padding: 10px;
+      height: 140px;
+      box-sizing: border-box; /* Ensures padding doesn't break the height */
+    }
+
+    img {
+      border: 1px solid black;
+      border-radius: 8px;
+      width: 80px;
+      height: 120px;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+
+    .details {
+      flex: 1; /* Correctly takes remaining space now */
+    }
+
+    .details h4 {
+      margin: 0 0 6px 0;
+    }
+
+    .meta-text {
+      font-size: smaller;
+      line-height: 1.4;
+    }
+
+    .price {
+      position: absolute;
+      top: 5px;
+      right:15px;
+      display: block;
+      font-weight: bold;
+      color: red; /* Amazon-style price color */
+      margin-top: 4px;
+    }
+
+    button {
+      position: absolute;
+      width: 60px;
+      bottom: 10px;
+      right: 10px;
+      background-color: rgb(243, 243, 87);
+      border: 1px solid #a8a800;
+      border-radius: 4px;
+      padding: 4px 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="parent">
+    <div class="child">
+        <img src="https://m.media-amazon.com/images/I/81E57eQea9L._AC_AA180_.jpg" alt="Suspicion">
+        <div class="details">
+            <h4>Suspicion: From the bestselling author <br>(Penguin Modern Classics)</h4>
+            <div class="meta-text">
+               by Seicho Matsumoto<br>
+               <b>Paperback</b>
+                <span class="price">Rs. 314</span>
+            </div>
+        </div>
+        <button>Buy</button>
+    </div>
+
+    <div class="child">
+        <img src="https://m.media-amazon.com/images/I/71bW8xaSJ+L._AC_AA180_.jpg" alt="Gora">
+        <div class="details">
+            <h4>Gora <br>(Penguin Modern Classics)</h4>
+            <div class="meta-text">
+               by Rabindranath Tagore<br>
+               <b>Paperback</b>
+               <span class="price">Rs. 278</span>
+            </div>
+        </div>
+        <button>Buy</button>
+    </div>
+
+      <div class="child">
+        <img style="width:130px;" src="https://m.media-amazon.com/images/I/6180VaWZohL._AC_AA180_.jpg" alt="Gora">
+        <div class="details">
+            <h4>Realme Buds T200X True Wireless</h4>
+            <div class="meta-text">
+               by Realme<br>
+               <span class="price">Rs. 1780</span>
+            </div>
+        </div><button>Buy</button></div> 
+        <div class="child">
+          <img style="width:90px;" src="https://m.media-amazon.com/images/I/71LQxo3YYEL._AC_AA180_.jpg" alt="Gora">
+        <div class="details">
+            <h4> Best of Premchand (Set of 5 Hindi Books)</h4>
+            <div class="meta-text">
+               by Premchand<br>
+               <b>Paperback</b>
+               <span class="price">Rs. 726</span>
+            </div>
+        </div><button>Buy</button></div>
+    <div class="child">
+      <img style="width: 150px;" src="https://m.media-amazon.com/images/I/71aeKYltdEL._AC_AA180_.jpg" alt="Suspicion">
+        <div class="details">
+            <h4>
+
+    Nivia Breeze Training Shoes for Men</h4>
+          
+                <span class="price">Rs. 1314</span>
+        </div><button>Buy</button></div>
+    <div class="child">
+      <img title="harmonica" style="width: 150px;"src="https://m.media-amazon.com/images/I/71Z41HbOnZL._AC_AA220_.jpg" alt="Suspicion">
+        <div class="details">
+            <h4>East top Blues Harmonica</h4>
+            <div class="meta-text"><br>
+               
+                <span class="price">Rs. 637</span>
+            </div>
+        </div><button>Buy</button></div>
+</div>
+
+</body>
+</html>
